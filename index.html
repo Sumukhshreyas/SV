@@ -396,11 +396,57 @@
 
     .hero-actions {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-columns: repeat(2, minmax(0, 220px));
       align-items: center;
       gap: 12px;
       max-width: 620px;
       margin-top: 28px;
+    }
+
+    .hero-cta {
+      min-height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: var(--radius-lg);
+      padding: 0 18px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero-cta svg {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+    }
+
+    .hero-cta:hover,
+    .hero-cta:focus-visible {
+      outline: none;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-cta.primary {
+      border: 1px solid transparent;
+      background: var(--orange);
+      color: #ffffff;
+    }
+
+    .hero-cta.primary:hover,
+    .hero-cta.primary:focus-visible {
+      background: var(--orange-dark);
+    }
+
+    .hero-cta.secondary {
+      border: 1px solid rgba(7, 54, 90, 0.16);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--blue);
+      backdrop-filter: blur(12px);
     }
 
     .search-field {
@@ -1477,9 +1523,19 @@
         font-size: 16px;
       }
 
-      .hero-actions,
       .toolbar {
         grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: none;
+      }
+
+      .hero-cta {
+        min-height: 54px;
+        padding: 0 12px;
+        font-size: 14px;
       }
 
       .hero-visual-card {
@@ -1579,6 +1635,17 @@
         font-size: 42px;
       }
 
+      .hero-cta {
+        gap: 7px;
+        padding: 0 9px;
+        font-size: 13px;
+      }
+
+      .hero-cta svg {
+        width: 18px;
+        height: 18px;
+      }
+
       .vehicle-type-card {
         align-items: flex-start;
       }
@@ -1645,17 +1712,20 @@
             <div class="hero-content">
               <h1 class="hero-title">Automobile spare parts, <span>ready to source.</span></h1>
               <p class="hero-copy">Trusted Bangalore supplier for car, commercial, tractor, construction, forklift, and two-wheeler parts. Search by OEM number, product code, vehicle, category, or brand.</p>
+              <div class="hero-actions" aria-label="Hero actions">
+                <button class="hero-cta primary" type="button" onclick="showPage('search')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+                  <span>Search Parts</span>
+                </button>
+                <button class="hero-cta secondary" type="button" onclick="openCategoryPage()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="6" height="6" rx="1.5"></rect><rect x="14" y="4" width="6" height="6" rx="1.5"></rect><rect x="4" y="14" width="6" height="6" rx="1.5"></rect><rect x="14" y="14" width="6" height="6" rx="1.5"></rect></svg>
+                  <span>Browse by Category</span>
+                </button>
+              </div>
               <div class="hero-visual-card" aria-label="Vehicle spare parts slideshow">
                 <div class="hero-slide active"><img src="assets/hero-machine-parts-cutout.png" alt="Construction vehicle spare parts diagram"></div>
                 <div class="hero-slide"><img src="assets/car-sedan-cutout.png" alt="Sedan automobile spare parts diagram"></div>
                 <div class="hero-slide"><img src="assets/car-suv-cutout.png" alt="SUV automobile spare parts diagram"></div>
-              </div>
-              <div class="hero-actions">
-                <label class="search-field" aria-label="Search spare parts">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
-                  <input type="search" placeholder="Search by part name" />
-                </label>
-                <button class="btn btn-primary" type="button" onclick="openCategoryPage()">Browse Products</button>
               </div>
             </div>
           </div>
