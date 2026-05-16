@@ -364,10 +364,13 @@
 
     .hero-grid {
       position: relative;
+    }
+
+    .hero-content {
       display: grid;
       grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
       align-items: center;
-      gap: 42px;
+      column-gap: 42px;
     }
 
     .hero-title {
@@ -437,30 +440,17 @@
 
     .hero-visual-card {
       position: relative;
-      min-height: 500px;
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      min-height: 430px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(7, 24, 39, 0.1);
-      border-radius: 22px;
-      background:
-        radial-gradient(ellipse 70% 45% at 50% 68%, rgba(255, 106, 0, 0.16), transparent 72%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(238, 243, 248, 0.8));
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
-    }
-
-    .hero-visual-card::before {
-      content: "";
-      position: absolute;
-      inset: 52px 46px 70px;
-      border: 1px solid rgba(255, 255, 255, 0.72);
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.52), transparent);
+      overflow: visible;
     }
 
     .hero-slide {
       position: absolute;
-      inset: 20px;
+      inset: 0;
       display: grid;
       place-items: center;
       opacity: 0;
@@ -1405,7 +1395,7 @@
         display: grid;
       }
 
-      .hero-grid,
+      .hero-content,
       .vehicle-range-grid,
       .detail-grid,
       .contact-page,
@@ -1414,6 +1404,8 @@
       }
 
       .hero-visual-card {
+        grid-column: auto;
+        grid-row: auto;
         min-height: 430px;
       }
 
@@ -1483,12 +1475,15 @@
       }
 
       .hero-visual-card {
-        min-height: 360px;
-        border-radius: 18px;
+        min-height: 270px;
       }
 
       .hero-slide {
-        inset: 12px 8px 88px;
+        inset: 0;
+      }
+
+      .hero-slide img {
+        max-height: 270px;
       }
 
       .section,
@@ -1636,6 +1631,11 @@
             <div class="hero-content">
               <h1 class="hero-title">Automobile spare parts, <span>ready to source.</span></h1>
               <p class="hero-copy">Trusted Bangalore supplier for car, commercial, tractor, construction, forklift, and two-wheeler parts. Search by OEM number, product code, vehicle, category, or brand.</p>
+              <div class="hero-visual-card" aria-label="Vehicle spare parts slideshow">
+                <div class="hero-slide active"><img src="assets/hero-machine-parts-cutout.png" alt="Construction vehicle spare parts diagram"></div>
+                <div class="hero-slide"><img src="assets/car-sedan-cutout.png" alt="Sedan automobile spare parts diagram"></div>
+                <div class="hero-slide"><img src="assets/car-suv-cutout.png" alt="SUV automobile spare parts diagram"></div>
+              </div>
               <div class="hero-actions">
                 <label class="search-field" aria-label="Search spare parts">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
@@ -1643,12 +1643,6 @@
                 </label>
                 <button class="btn btn-primary" type="button" onclick="openCategoryPage()">Browse Products</button>
               </div>
-            </div>
-
-            <div class="hero-visual-card" aria-label="Vehicle spare parts slideshow">
-              <div class="hero-slide active"><img src="assets/hero-machine-parts-cutout.png" alt="Construction vehicle spare parts diagram"></div>
-              <div class="hero-slide"><img src="assets/car-sedan-cutout.png" alt="Sedan automobile spare parts diagram"></div>
-              <div class="hero-slide"><img src="assets/car-suv-cutout.png" alt="SUV automobile spare parts diagram"></div>
             </div>
           </div>
         </div>
